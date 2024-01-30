@@ -1,12 +1,43 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-@import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
+
+/* Reset styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.main-logo {
+  margin: 0 auto;
+}
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -22,4 +53,163 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+body {
+   
+  margin: 16px;
+  /* background-color: #fafafa; */
+  color: #212121;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+}
+
+.header {
+  padding: 20px 0;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.nav-link {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #747bff;
+}
+
+  
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 24px 156px;
+  gap: 24px;
+  align-items: center;
+  }
+
+.gallery-item {
+  width: calc((100% - 48px) / 3);
+}
+
+.gallery-image {
+  width: 360px;
+  height: 200px;
+}
+
+.gallery-image:hover {
+ 
+  cursor: url('../img/bxs_hand-down.png'), pointer;
+  transform: scale(1.025);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+} 
+
+.sl-wrapper {
+  background-color: rgba(46, 47, 66, 0.80);
+}
+
+.close-btn .arrow-btn {
+  width: 100%;
+  height: 100%;
+}
+/* =========FORMA ================*/
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.feedback-form input {
+  min-width: 360px;
+  padding: 8px 16px 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #2E2F42;
+  border-radius: 4px;
+  border: 0.1em solid #808080;
+  transition: border 250ms ease-in-out;
+}
+
+.feedback-form textarea {
+  resize: none;
+  min-width: 360px;
+  padding: 8px 16px 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #2E2F42;
+  border-radius: 4px;
+  border: 0.1em solid #808080;
+  transition: border 250ms ease-in-out;
+}
+
+.feedback-form textarea:hover,
+.feedback-form input:hover {
+  border-color: black;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.feedback-form textarea:focus,
+.feedback-form input:focus {
+  outline: transparent;
+  border-color: #808080;
+  border-radius: 4px;
+}
+
+.feedback-form input::placeholder {
+  color: #2E2F42;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.feedback-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #2E2F42;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+
+}
+
+.feedback-form label:nth-child(1) {
+  margin-top: 16px;
+}
+
+.feedback-form label:nth-child(2) {
+  margin-bottom: 16px;
+}
+
+.feedback-form button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #4E75FF;
+  border: none;
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  transition: background-color 250ms ease-in-out;
+}
+
+.feedback-form button:hover {
+  background-color: #6C8CFF;
 }
