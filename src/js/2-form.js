@@ -1,34 +1,44 @@
+
 const form = document.querySelector('.feedback-form');
-const userEmail = form.querySelector("input");
-const userMessage = form.querySelector("textarea");
-
-const feedback = JSON.parse(localStorage.getItem("feedback-form-state")) || {};
-
-function setValue({ email, message }) {
-    userEmail.value = email || "";
-    userMessage.value = message || "";
-}
-
-!feedback ? feedback = { email: "", message: "" } : setValue(feedback);
-
-form.addEventListener('input', (e) => {
-    const element = e.target.name;
-    const value = e.target.value;
-    feedback[element] = value;
-
-    localStorage.setItem("feedback-form-state", JSON.stringify(feedback));
-});
+const local = 'feedback-form-state';
 
 form.addEventListener('submit', (e) => {
-    if (userEmail.value && userMessage.value) {
-        e.preventDefault();
+  e.preventDefault(); 
+    const email = form.querySelector("input").value.trim();
+    const message = form.querySelector("textarea").value.trim();
 
-        localStorage.removeItem("feedback-form-state");
-        userEmail.value = '';
-        userMessage.value = '';
-
-        console.log(feedback);
+  if (email !== '' && message !== '') {
+    const userData = {
+      userEmail: email,
+      userMessage: message,
+    };
+    console.log(userData);
     } else {
-        alert("All inputs must be filled!");
+        alert('All inputs must be filled!');
     }
+
+   form.reset();
+
+   localStorage.removeItem(local);
 });
+
+form.addEventListener('input', (e) => {
+    const { email, message } = e.currentTarget.elements;
+    const userData = {
+        userEmail: email.value.trim(),
+        userMessage: message.value.trim(),
+      };
+      localStorage.setItem(local, JSON.stringify(userData));
+    });
+
+function renderPage() {
+    const lsData = localStorage.getItem(local);
+        if (lsData) {
+        const userData = JSON.parse(lsData);
+        const { email, message } = userData;
+        
+        const { email: emailInput, message: messageInput } = form.elements;
+        emailInput.value = email;
+        messageInput.value = message;
+        }
+    }
