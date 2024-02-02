@@ -2,6 +2,7 @@
 const form = document.querySelector('.feedback-form');
 const local = 'feedback-form-state';
 
+
 form.addEventListener('submit', (e) => {
   e.preventDefault(); 
     const email = form.querySelector("input").value.trim();
@@ -9,8 +10,8 @@ form.addEventListener('submit', (e) => {
 
   if (email !== '' && message !== '') {
     const userData = {
-      userEmail: email,
-      userMessage: message,
+      formEmail: email,
+      formMessage: message,
     };
     console.log(userData);
     } else {
@@ -25,8 +26,8 @@ form.addEventListener('submit', (e) => {
 form.addEventListener('input', (e) => {
     const { email, message } = e.currentTarget.elements;
     const userData = {
-        userEmail: email.value.trim(),
-        userMessage: message.value.trim(),
+        formEmail: email.value.trim(),
+        formMessage: message.value.trim(),
       };
       localStorage.setItem(local, JSON.stringify(userData));
     });
@@ -35,10 +36,11 @@ function renderPage() {
     const lsData = localStorage.getItem(local);
         if (lsData) {
         const userData = JSON.parse(lsData);
-        const { email, message } = userData;
+        const { formEmail, formMessage } = userData;
         
         const { email: emailInput, message: messageInput } = form.elements;
-        emailInput.value = email;
-        messageInput.value = message;
+        emailInput.value = formEmail;
+        messageInput.value = formMessage;
         }
     }
+    document.addEventListener('DOMContentLoaded', renderPage);
